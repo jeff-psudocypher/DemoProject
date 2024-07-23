@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+
+        <h4 class="text-center">Shopping cart</h4>
+        <div class="col-7">
+
+        <table class="table table-bordered">
+
+        <tr><th colspan="5">Cart-Items</th></tr>
+            {% for i in cart %}
+            <tr>
+            <td>
+            <img src="{{i.product.image.url}}" height="200px" width="300px">
+            </td>
+            <td>Product ID :{{i.id}}</td>
+            <td>Product :<br>{{i.product.name}}</td>
+
+                <td><b>Quantity:{{i.quantity}}</b><br>
+                    <b>Unit Price:{{i.product.price}}*{{i.quantity}}</b></td>
+             <td><b>Subtotal:{{i.subtotal}}<b></td>
+    <td>
+                <a href="{% url 'cart:addcart' i.product.id %}" style="color:black;"><i class="fa-solid fa-circle-plus"></i></a><br>
+                <a href="{% url 'cart:cart_decrement' i.product.id %}" style="color:black;"><i class="fa-sharp fa-solid fa-circle-minus"></i></a><br>
+                <a href="{% url 'cart:cart_delete' i.product.id %}" style="color:black;"><i class="fa-solid fa-trash"></i></a><br>
+
+    </td>
+            </tr>
+            {% endfor %}
+        </table>
+        </div>
+            <div class="col-4">
+            <table class="table table-bordered">
+        <tr> <th colspan="4"><b>Check-Out<b></th>
+            </tr>
+                <tr><td><b>Total Amount:{{total}}<b></tr>
+                <tr><td><a class="button" href="{% url 'cart:order' %}"><b class="bg-info">Place order</b></a></td></tr>
+                <tr><td><a class="button" href="{% url 'category' %}"><b class="bg-light">Continue Shopping<b></a></td></tr>
+            </div></div>
+    {% endblock %}

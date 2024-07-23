@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+    <img src="{{product.image.url}}" class="card-img-top"  height="400px" width="200px">
+</div>
+<div class="col-6 p-4" >
+    <h5 class="card-title">{{product.name}}</h5>
+    <h6>Price is:{{product.price}}</h6>
+    <h6>Available Stock:{{product.stock}}</h6>
+    {% if user.is_superuser is True %}
+    {% if product.stock > 0 %}
+<!--    <h3 class="text-success">Product in stock</h3>-->
+    <a href="{% url 'admin:index' %}">Add stock</a>
+    {% else %}
+    <h3 class="text-danger">Out of stock</h3>
+    <a style="text-decoration:none" href="{% url 'admin:index' %}" class="btn_1">Add stock</a>
+    {% endif %}
+    {% else %}
+    {% if product.stock > 0 %}
+    <a style="..." href="{% url 'cart:addcart' product.id %}" class="btn_1">Add to cart</a>
+    {% else %}
+    <h3 class="text-danger">Out of stock</h3>
+    {% endif %}
+    <h5>Product Details</h5>
+    <h6>{{product.desc}}</h6>
+</div>
+    </div></div>
+{% endif %}
+{% endblock %}

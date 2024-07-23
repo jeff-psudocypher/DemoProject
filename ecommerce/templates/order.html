@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<form method="POST" class="mt-3 mt-5">
+    {% csrf_token %}
+      <div class="mb-3">
+    <label class="form-label">Phone No:</label>
+    <input type="number" class="form-control" name="ph" >
+  </div>
+      <div class="mb-3">
+    <label class="form-label">Address</label>
+    <input type="text" class="form-control" name="a" >
+  </div>
+          <div class="mb-3">
+    <label class="form-label">Pin code</label>
+    <input type="number" class="form-control" name="p" >
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{% endblock %}

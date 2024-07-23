@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+<title>Register</title>
+{% endblock %}
+{% block content %}
+<form method="POST" class="mt-3">
+    {% csrf_token %}
+  <div class="mb-3">
+    <label class="form-label">Username</label>
+    <input type="text" class="form-control" name="u" >
+  </div>
+ <div class="mb-3">
+    <label class="form-label">Password</label>
+    <input type="password" class="form-control" name="p" >
+  </div>
+    <div class="mb-3">
+    <label class="form-label">Confirm password</label>
+    <input type="password" class="form-control" name="cp" >
+  </div>
+     <div class="mb-3">
+    <label class="form-label">email</label>
+    <input type="email" class="form-control" name="e" >
+  </div>
+         <div class="mb-3">
+    <label class="form-label">firstname</label>
+    <input type="text" class="form-control" name="fn" >
+  </div>
+         <div class="mb-3">
+    <label class="form-label">lastname</label>
+    <input type="text" class="form-control" name="ln" a>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{% endblock%}
