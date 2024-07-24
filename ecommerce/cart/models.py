@@ -1,6 +1,7 @@
 from django.db import models
 from shop.models import Products
 from django.contrib.auth.models import User
+from django.http import HttpResponse
 # Create your models here.
 class Cart(models.Model):
     product=models.ForeignKey(Products,on_delete=models.CASCADE)
